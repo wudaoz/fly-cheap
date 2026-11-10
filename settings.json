@@ -1,0 +1,14 @@
+{
+  "_comment": "改这里就行：origin 出发机场/城市的 IATA 代码，currency 币种，gl 是 Google 的国家代码，tzOffsetHours 本地时区（只影响运行编号）。fixedRoute 填 null 不查固定日期航线；要查就写成 {\"dest\":\"CAN\",\"out\":\"2027-02-06\",\"back\":\"2027-02-11\",\"deadline\":\"2027-02-07\",\"label\":\"春节去广州\",\"window\":\"CNY 2027\",\"note\":\"页面上显示的一句说明\"}。thresholds 是心理价位（往返），没写的目的地用缺省值。",
+  "title": "飞哪儿便宜",
+  "origin": "SIN",
+  "originName": "新加坡",
+  "currency": "SGD",
+  "gl": "sg",
+  "tzOffsetHours": 8,
+  "monthsAhead": 5,
+  "windowDays": 125,
+  "europe": true,
+  "fixedRoute": null,
+  "thresholds": {}
+}
