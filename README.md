@@ -4,6 +4,8 @@
 
 只需要一个 GitHub 账号和一个免费的 [SerpApi](https://serpapi.com/) key。没有服务器，没有数据库，fork 之后改一行出发地就能用。
 
+> **关于价格**：数据来自 Google Flights 的公开运价，通常只含随身行李，而且可能比携程 / Trip.com / Agoda 这类代理渠道贵一点点（代理常有渠道价和立减）。所以看到心动的价格后，建议再去这些平台核对一眼实际下单价。这个看板的价值在于每天同口径记录，看趋势、看哪个月便宜、看是不是创了新低，这些是单次查价看不出来的。
+
 ```
 GitHub Actions（每天一次）
   collect.py ──► SerpApi ──► Google Flights 价格 ──► data/<collection>/*.json
@@ -118,6 +120,6 @@ MIT
 
 ## English
 
-**fly-cheap** is a cheap-flights board that runs entirely on GitHub. A daily GitHub Actions workflow calls SerpApi's Google Travel Explore / Google Flights engines (6–7 requests a day, within the free tier), stores every result as JSON in `data/`, evaluates alert rules, and deploys a static dashboard to GitHub Pages.
+**fly-cheap** is a cheap-flights board that runs entirely on GitHub. Prices are Google Flights' public fares (usually carry-on only) and can be slightly higher than what Trip.com, Agoda or similar agencies show, so double-check there before booking; the board is for spotting trends, cheap months and new lows from a consistent daily record. A daily GitHub Actions workflow calls SerpApi's Google Travel Explore / Google Flights engines (6–7 requests a day, within the free tier), stores every result as JSON in `data/`, evaluates alert rules, and deploys a static dashboard to GitHub Pages.
 
 Setup: fork → set `origin` / `currency` in `settings.json` → add a `SERPAPI_KEY` repository secret → Settings → Pages → Source: *GitHub Actions* → run the `collect` workflow once. Everything configurable (origin, currency, months, an optional fixed-date route, target prices) is in `settings.json`; alert rules are in `alerts.py`; the data schema is in `docs/data-model.md`. No push notifications by default — pipe `alerts.py`'s output to ntfy.sh or a Telegram bot in the workflow if you want them. MIT licensed.
