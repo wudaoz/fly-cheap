@@ -17,12 +17,21 @@ index.html（静态页面）◄── fetch('data/bundle.json') ◄────�
 
 1. **Fork** 这个仓库（或 Use this template）。
 2. 改 `settings.json` 里的出发地（见下一节），提交。
-3. 到 [serpapi.com](https://serpapi.com/) 注册，拿到 API key（免费 250 次/月）。
-4. 仓库 **Settings → Secrets and variables → Actions → New repository secret**，名字 `SERPAPI_KEY`，值填 key。
+3. 到 [serpapi.com](https://serpapi.com/) 注册一个自己的账号，在 [Manage API Key](https://serpapi.com/manage-api-key) 页面复制 key（64 位字母数字；免费套餐 250 次/月，本项目每天用 6–7 次，够）。
+4. 仓库 **Settings → Secrets and variables → Actions → New repository secret**，Name 填 `SERPAPI_KEY`，Secret 粘贴 key，Add secret。key 只存在这里，不要写进任何文件或提交。
 5. 仓库 **Settings → Pages → Build and deployment → Source** 选 **GitHub Actions**。
 6. **Actions → collect → Run workflow** 手动跑第一次。两三分钟后页面就在 `https://<你的用户名>.github.io/fly-cheap/`，手机浏览器打开即可。
 
 之后每天自动采集一次（默认 00:40 UTC，即北京/新加坡时间 08:40；改 `.github/workflows/collect.yml` 里的 cron）。
+
+### 第一次跑失败了？
+
+打开 Actions 里那次运行，看红色的是哪一步：
+
+- `Collect fares from SerpApi` 报 `KeyError: 'SERPAPI_KEY'`：第 4 步的 secret 没加，或名字拼错。
+- 同一步报 `HTTP Error 401: Unauthorized`：key 不对，多半是粘贴时带了空格或少了几位。回 serpapi.com 重新复制，在 Secrets 页面 Update 一次。失败的请求不计额度。
+- `configure-pages` / `deploy-pages` 报错：第 5 步没选 GitHub Actions。
+- 页面能打开但说「还没有数据」：采集那次运行没成功，或者部署还没生效，等一分钟强制刷新（Cmd/Ctrl+Shift+R）。
 
 ## 改出发地和其他设置：`settings.json`
 
