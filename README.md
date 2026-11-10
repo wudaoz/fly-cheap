@@ -29,6 +29,7 @@ index.html（静态页面）◄── fetch('data/bundle.json') ◄────�
 ```json
 {
   "title": "飞哪儿便宜",
+  "greeting": "",             // 页面最上方的横幅文字，留空不显示
   "origin": "SIN",            // 出发机场或城市的 IATA 代码：SIN、HKG、PVG、TPE、KUL、BKK …
   "originName": "新加坡",      // 页面上显示的出发地名
   "currency": "SGD",          // 币种：SGD、CNY、HKD、USD、MYR …
